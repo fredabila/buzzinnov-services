@@ -37,7 +37,7 @@ export default function Footer() {
               <ul className="space-y-4 font-medium text-slate-600">
                 <li><Link href="#services" className="hover:text-primary transition-colors">Web Development</Link></li>
                 <li><Link href="#services" className="hover:text-primary transition-colors">UI/UX Design</Link></li>
-                <li><Link href="#services" className="hover:text-primary transition-colors">Product Design</Link></li>
+                <li><Link href="#services" className="hover:text-primary transition-colors">Custom Software</Link></li>
                 <li><Link href="#services" className="hover:text-primary transition-colors">Digital Strategy</Link></li>
               </ul>
             </div>

@@ -37,6 +37,32 @@ export type WebsiteAudit = {
   };
 };
 
+export type SearchResult = {
+  title: string;
+  link: string;
+  snippet: string;
+  source: "organic" | "brand" | "directory" | "social" | "review" | "competitor";
+};
+
+export type PresenceResearch = {
+  provider: "google_custom_search" | "not_configured" | "mock";
+  query: string;
+  brand_results: SearchResult[];
+  seo_issues: string[];
+  reputation_signals: string[];
+  competitor_mentions: string[];
+  visibility_score: number;
+  summary: string;
+};
+
+export type OperationsAnalysis = {
+  operations_score: number;
+  issues: string[];
+  automation_opportunities: string[];
+  recommended_systems: string[];
+  hook_summary: string;
+};
+
 export type OutreachEmail = {
   subject: string;
   body: string;
@@ -47,6 +73,8 @@ export type LeadRecord = {
   run_id: string;
   lead: BusinessLead;
   audit: WebsiteAudit;
+  presence: PresenceResearch;
+  operations: OperationsAnalysis;
   outreach: OutreachEmail;
   created_at: string;
 };

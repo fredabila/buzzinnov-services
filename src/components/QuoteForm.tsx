@@ -170,7 +170,7 @@ export default function QuoteForm() {
                       <div className="space-y-4">
                         <Label className="text-slate-600">What can we help you with?</Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
-                          {['Web Development', 'UI/UX Design', 'Product Design', 'Consultancy'].map((type) => (
+                          {['Web Development', 'UI/UX Design', 'Custom Software', 'Consultancy'].map((type) => (
                             <label key={type} className={`
                               relative flex items-center gap-4 p-5 rounded-2xl border cursor-pointer transition-all duration-300 overflow-hidden
                               ${formData.serviceType === type ? 'border-primary bg-white shadow-[0_8px_30px_rgb(59,130,246,0.12)] ring-1 ring-primary' : 'border-slate-200 bg-white/50 hover:bg-white hover:border-slate-300 hover:shadow-sm'}

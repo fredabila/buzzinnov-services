@@ -64,7 +64,7 @@ export default function Services() {
             End-to-End <span className="text-slate-400">Innovation</span>
           </h3>
           <p className="text-slate-600 text-xl font-medium max-w-2xl leading-relaxed">
-            We bring ideas to life across both the physical and digital realms, ensuring seamless execution from high-level concept to global launch.
+            We bring ideas to life in the digital realm, ensuring seamless execution from high-level concept to global launch.
           </p>
         </div>
         

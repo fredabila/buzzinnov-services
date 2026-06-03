@@ -6,12 +6,21 @@ The `/lead-engine` workspace runs a 3-stage pipeline:
 
 1. Google Places scraper using Text Search and Place Details.
 2. Website audit agent with homepage crawl, mobile, speed, CTA, form, booking, SEO, SSL, and design checks.
-3. Outreach generator that creates short personalized cold emails and exports CRM-ready CSV files.
+3. Digital presence research using Google Custom Search when configured. This checks branded search results, owned-site visibility, directories, social profiles, review/reputation pages, and possible competitor leakage.
+4. Operations opportunity analysis for automation hooks such as missed-call follow-up, booking, CRM routing, email/SMS reminders, review generation, and local SEO workflows.
+5. Outreach generator that creates short personalized cold emails and exports CRM-ready CSV files.
 
 Create `.env.local` from `.env.example` and set:
 
 ```bash
 GOOGLE_PLACES_API_KEY=your_google_places_key
+```
+
+To enable Google brand/SEO research, create a Programmable Search Engine and add:
+
+```bash
+GOOGLE_SEARCH_API_KEY=your_google_search_key
+GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id
 ```
 
 For local testing without Google API calls:

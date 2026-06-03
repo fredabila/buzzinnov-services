@@ -200,6 +200,12 @@ export default function LeadEnginePage() {
                       <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs text-slate-600">
                         {record.audit.website_score}/100
                       </span>
+                      <span className="rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-xs text-sky-700">
+                        SEO {record.presence.visibility_score}/100
+                      </span>
+                      <span className="rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-xs text-violet-700">
+                        Ops {record.operations.operations_score}/100
+                      </span>
                     </div>
                     <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-500">
                       <span>{record.lead.phone ?? "No phone"}</span>
@@ -208,6 +214,30 @@ export default function LeadEnginePage() {
                       <span>{record.lead.website ?? "No website"}</span>
                     </div>
                     <p className="mt-3 text-sm leading-6 text-slate-700">{record.audit.opportunity_summary}</p>
+                    <div className="mt-3 grid gap-3 md:grid-cols-2">
+                      <div className="rounded-lg border border-sky-100 bg-sky-50/60 p-3">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Google and SEO</p>
+                        <p className="mt-1 text-sm leading-5 text-slate-700">{record.presence.summary}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {record.presence.seo_issues.slice(0, 3).map((issue) => (
+                            <span key={issue} className="rounded-md bg-white px-2 py-1 text-xs text-sky-800">
+                              {issue}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="rounded-lg border border-violet-100 bg-violet-50/60 p-3">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">Automation angle</p>
+                        <p className="mt-1 text-sm leading-5 text-slate-700">{record.operations.hook_summary}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {record.operations.recommended_systems.slice(0, 3).map((system) => (
+                            <span key={system} className="rounded-md bg-white px-2 py-1 text-xs text-violet-800">
+                              {system}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {record.audit.issues.map((issue) => (
                         <span key={issue} className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-xs text-slate-700">

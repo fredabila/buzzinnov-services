@@ -1,6 +1,8 @@
 import { auditWebsite } from "./auditAgent";
 import { scrapeGooglePlaces } from "./googlePlaces";
+import { analyzeOperations } from "./operationsAgent";
 import { generateOutreachEmail } from "./outreachAgent";
+import { researchPresence } from "./presenceResearch";
 import { savePipelineRun } from "./storage";
 import type { LeadRecord, LeadSearchInput, PipelineRun } from "./types";
 
@@ -42,12 +44,16 @@ export async function runLeadPipeline(input: LeadSearchInput): Promise<PipelineR
     records = await mapWithConcurrency(leads, batchSize, async (lead) => {
       try {
         const audit = await auditWebsite(lead);
-        const outreach = generateOutreachEmail(lead, audit);
+        const presence = await researchPresence(lead);
+        const operations = analyzeOperations(lead, audit, presence);
+        const outreach = generateOutreachEmail(lead, audit, presence, operations);
         return {
           id: recordId(lead.place_id),
           run_id: id,
           lead,
           audit,
+          presence,
+          operations,
           outreach,
           created_at: new Date().toISOString(),
         };
@@ -55,12 +61,16 @@ export async function runLeadPipeline(input: LeadSearchInput): Promise<PipelineR
         const message = error instanceof Error ? error.message : "Unknown audit error";
         errors.push(`${lead.business_name}: ${message}`);
         const audit = await auditWebsite({ ...lead, website: null });
+        const presence = await researchPresence(lead);
+        const operations = analyzeOperations(lead, audit, presence);
         return {
           id: recordId(lead.place_id),
           run_id: id,
           lead,
           audit,
-          outreach: generateOutreachEmail(lead, audit),
+          presence,
+          operations,
+          outreach: generateOutreachEmail(lead, audit, presence, operations),
           created_at: new Date().toISOString(),
         };
       }

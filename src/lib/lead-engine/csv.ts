@@ -8,6 +8,10 @@ const headers = [
   "Issues",
   "Website Score",
   "Opportunity Level",
+  "SEO Issues",
+  "Visibility Score",
+  "Operations Issues",
+  "Automation Opportunities",
   "Outreach Email",
 ];
 
@@ -25,6 +29,10 @@ export function recordsToCsv(records: LeadRecord[]) {
     record.audit.issues.join("; "),
     record.audit.website_score,
     record.audit.business_potential,
+    record.presence.seo_issues.join("; "),
+    record.presence.visibility_score,
+    record.operations.issues.join("; "),
+    record.operations.automation_opportunities.join("; "),
     `Subject: ${record.outreach.subject}\n\n${record.outreach.body}`,
   ]);
 

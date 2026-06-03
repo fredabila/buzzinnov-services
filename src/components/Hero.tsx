@@ -51,8 +51,8 @@ export default function Hero() {
                 <PenTool className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-sm font-bold text-slate-900">Product Design</div>
-                <div className="text-xs text-slate-500 font-medium">Premium Aesthetics</div>
+                <div className="text-sm font-bold text-slate-900">UI/UX Design</div>
+                <div className="text-xs text-slate-500 font-medium">Intuitive Interfaces</div>
               </div>
             </div>
           </motion.div>
@@ -69,8 +69,8 @@ export default function Hero() {
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-sm font-bold text-slate-900">Innovation</div>
-                <div className="text-xs text-slate-500 font-medium">Next-Gen Solutions</div>
+                <div className="text-sm font-bold text-slate-900">Scalability</div>
+                <div className="text-xs text-slate-500 font-medium">Cloud Infrastructure</div>
               </div>
             </div>
           </motion.div>
@@ -98,9 +98,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter mb-8 text-slate-900 leading-[1.05]"
           >
-            Engineering the <br className="hidden md:block" />
+            Engineering <br className="hidden md:block" />
             <span className="text-gradient-primary animate-gradient-text bg-[linear-gradient(to_right,#2563eb,#0ea5e9,#14b8a6,#2563eb)]">
-              Physical & Digital
+              Digital Excellence
             </span>
           </motion.h1>
           
@@ -110,7 +110,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-xl md:text-2xl text-slate-600 mb-14 max-w-3xl leading-relaxed font-medium"
           >
-            We transform complex problems into beautiful, high-performance platforms and award-winning products. Welcome to the new era of innovation.
+            We transform complex problems into beautiful, high-performance web platforms and digital ecosystems. Welcome to the new era of innovation.
           </motion.p>
           
           <motion.div 

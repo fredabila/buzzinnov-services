@@ -12,7 +12,7 @@ const steps = [
   {
     number: "02",
     title: "Blueprint & Design",
-    description: "Whether it's a digital wireframe or a mechanical sketch, we build the precise, detailed blueprint of the final product."
+    description: "Whether it's a strategic wireframe or a high-fidelity prototype, we build the precise, detailed blueprint of the final product."
   },
   {
     number: "03",
@@ -22,7 +22,7 @@ const steps = [
   {
     number: "04",
     title: "Quality Assurance",
-    description: "Rigorous, uncompromising testing—both digital and physical—to ensure absolute reliability and performance."
+    description: "Rigorous, uncompromising testing across all devices and browsers to ensure absolute reliability and performance."
   },
   {
     number: "05",

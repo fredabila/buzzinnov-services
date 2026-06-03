@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const serviceMap: Record<string, string> = {
       'Web Development': 'Web development',
       'UI/UX Design': 'UI/UX Design',
-      'Product Design': 'Product Design',
+      'Custom Software': 'Product Design', // Maps Custom Software to the existing Google Form 'Product Design' field
       'Consultancy': 'Consultancy',
     };
 
