@@ -51,7 +51,7 @@ export default function FeaturedWork() {
             </h3>
           </div>
           <p className="text-slate-500 font-medium max-w-md md:text-right">
-            A glimpse into our portfolio spanning high-performance digital platforms, intuitive interfaces, and scalable web solutions.
+            A glimpse into our proprietary portfolio of products built by BuzzChat, spanning intelligent networking, global connections, and AI infrastructure.
           </p>
         </div>
         
