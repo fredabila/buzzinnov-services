@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -38,9 +38,15 @@ export default function FeaturedWork() {
     target: targetRef,
   });
 
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   // Translate the flex container to the left by its full width minus 1 viewport width,
   // effectively stopping when the last item reaches the right edge.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
+  const x = useTransform(smoothProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
 
   return (
     <section ref={targetRef} className="relative h-[400vh] bg-slate-900 border-t border-slate-800 z-20">
@@ -48,7 +54,7 @@ export default function FeaturedWork() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         
         {/* Animated horizontal flex container */}
-        <motion.div style={{ x }} className="flex gap-8 px-4 md:px-20 items-center">
+        <motion.div style={{ x }} className="flex gap-8 px-4 md:px-20 items-center w-max">
           
           {/* Introductory Title Card */}
           <div className="w-[85vw] md:w-[40vw] max-w-xl flex-shrink-0 flex flex-col justify-center pr-10">
