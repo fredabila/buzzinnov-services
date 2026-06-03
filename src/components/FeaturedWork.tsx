@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -8,88 +9,94 @@ const projects = [
     title: "eintercon",
     category: "Global Connections",
     image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    span: "md:col-span-8 md:row-span-2",
   },
   {
     title: "Mutle",
     category: "Trust Graph",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    span: "md:col-span-4 md:row-span-1",
   },
   {
     title: "Yenhyia",
     category: "Smart Matching",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    span: "md:col-span-4 md:row-span-1",
   },
   {
     title: "OrcBot",
     category: "Strategic AI Agent",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    span: "md:col-span-12 md:row-span-1 lg:col-span-6 lg:row-span-1",
   },
   {
     title: "PSON5",
     category: "Personalization Infrastructure",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    span: "md:col-span-12 md:row-span-1 lg:col-span-6 lg:row-span-1",
   }
 ];
 
 export default function FeaturedWork() {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  // Translate the flex container to the left by its full width minus 1 viewport width,
+  // effectively stopping when the last item reaches the right edge.
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "calc(-100% + 100vw)"]);
+
   return (
-    <section className="py-32 bg-slate-50 relative z-20 border-t border-slate-100">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div className="max-w-2xl">
-            <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-4 flex items-center gap-2">
-              <span className="w-8 h-px bg-primary"></span>
+    <section ref={targetRef} className="relative h-[400vh] bg-slate-900 border-t border-slate-800 z-20">
+      {/* Sticky container pins to the top of the viewport */}
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        
+        {/* Animated horizontal flex container */}
+        <motion.div style={{ x }} className="flex gap-8 px-4 md:px-20 items-center">
+          
+          {/* Introductory Title Card */}
+          <div className="w-[85vw] md:w-[40vw] max-w-xl flex-shrink-0 flex flex-col justify-center pr-10">
+            <h2 className="text-cyan-400 font-bold tracking-widest uppercase text-sm mb-6 flex items-center gap-3">
+              <span className="w-12 h-px bg-cyan-400"></span>
               Selected Work
             </h2>
-            <h3 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
-              Crafting experiences that <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">inspire</span>
+            <h3 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-[1.05] mb-8">
+              Crafting <br/>
+              experiences <br/>
+              that <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">inspire</span>.
             </h3>
+            <p className="text-slate-400 font-medium text-lg md:text-xl max-w-md leading-relaxed">
+              Scroll to explore our proprietary portfolio of products built by BuzzChat, spanning intelligent networking, global connections, and AI infrastructure.
+            </p>
           </div>
-          <p className="text-slate-500 font-medium max-w-md md:text-right">
-            A glimpse into our proprietary portfolio of products built by BuzzChat, spanning intelligent networking, global connections, and AI infrastructure.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[280px] gap-6">
+
+          {/* Project Cards */}
           {projects.map((project, index) => (
-            <motion.div 
-              key={index} 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={`group relative rounded-[2rem] overflow-hidden bg-slate-200 transition-all duration-500 hover:shadow-[0_20px_40px_rgb(0,0,0,0.15)] hover:-translate-y-1 ${project.span}`}
+            <div 
+              key={index}
+              className={`w-[85vw] md:w-[60vw] max-w-4xl h-[60vh] md:h-[70vh] flex-shrink-0 group relative rounded-[2.5rem] overflow-hidden bg-slate-800 shadow-2xl shadow-black/50 ${index === projects.length - 1 ? 'mr-4 md:mr-20' : ''}`}
             >
               {/* Image Background */}
               <img 
                 src={project.image} 
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               
               {/* Gradient Overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               {/* Content Overlay (Liquid Glass style info box) */}
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                <div className="liquid-glass p-5 rounded-2xl w-full flex items-center justify-between">
+              <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 flex items-end justify-between">
+                <div className="liquid-glass p-6 md:p-8 rounded-[2rem] w-full flex items-center justify-between border-white/20 bg-white/10 backdrop-blur-3xl shadow-2xl">
                   <div>
-                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{project.category}</div>
-                    <h4 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">{project.title}</h4>
+                    <div className="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">{project.category}</div>
+                    <h4 className="text-3xl md:text-5xl font-bold text-white tracking-tight">{project.title}</h4>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 shadow-lg">
-                    <ArrowUpRight className="w-5 h-5" />
+                  <div className="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white text-slate-900 flex items-center justify-center -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 shadow-2xl">
+                    <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
