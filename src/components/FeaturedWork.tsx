@@ -9,31 +9,36 @@ const projects = [
     title: "eintercon",
     category: "Global Connections",
     image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    color: "from-blue-600/20 to-blue-900/40"
+    color: "from-blue-600/20 to-blue-900/40",
+    link: "https://eintercon.com"
   },
   {
     title: "Mutle",
     category: "Trust Graph",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    color: "from-sky-600/20 to-sky-900/40"
+    color: "from-sky-600/20 to-sky-900/40",
+    link: "https://trymutle.com"
   },
   {
     title: "Yenhyia",
     category: "Smart Matching",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    color: "from-teal-600/20 to-teal-900/40"
+    color: "from-teal-600/20 to-teal-900/40",
+    link: "https://yenhyia.buzzchat.site"
   },
   {
     title: "OrcBot",
     category: "Strategic AI Agent",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    color: "from-cyan-600/20 to-cyan-900/40"
+    color: "from-cyan-600/20 to-cyan-900/40",
+    link: "https://orcbot.buzzchat.site"
   },
   {
     title: "PSON5",
     category: "Personalization Infrastructure",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-    color: "from-slate-600/20 to-slate-900/40"
+    color: "from-slate-600/20 to-slate-900/40",
+    link: "https://pson.buzzchat.site"
   }
 ];
 
@@ -89,7 +94,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
           alt={project.title}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
-        
+
         {/* Gradient Overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-60 mix-blend-multiply group-hover:opacity-80 transition-opacity duration-700`}></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -105,11 +110,16 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
                 {project.title}
               </h4>
             </div>
-            
+
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all duration-500 cursor-pointer shadow-xl">
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all duration-500 cursor-pointer shadow-xl block"
+              >
                 <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
-              </div>
+              </a>
             </div>
           </div>
         </div>
