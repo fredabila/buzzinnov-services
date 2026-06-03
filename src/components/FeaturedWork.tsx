@@ -5,33 +5,33 @@ import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
-    title: "Global FinTech Platform",
-    category: "Digital Ecosystem",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "eintercon",
+    category: "Global Connections",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
     span: "md:col-span-8 md:row-span-2",
   },
   {
-    title: "SaaS Dashboard",
-    category: "UI/UX Experience",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "Mutle",
+    category: "Trust Graph",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
     span: "md:col-span-4 md:row-span-1",
   },
   {
-    title: "Smart Home Interface",
-    category: "Web Application",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "Yenhyia",
+    category: "Smart Matching",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
     span: "md:col-span-4 md:row-span-1",
   },
   {
-    title: "Mobile Application",
-    category: "Digital Retail",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "OrcBot",
+    category: "Strategic AI Agent",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
     span: "md:col-span-12 md:row-span-1 lg:col-span-6 lg:row-span-1",
   },
   {
-    title: "E-Commerce Strategy",
-    category: "Consulting",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "PSON5",
+    category: "Personalization Infrastructure",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
     span: "md:col-span-12 md:row-span-1 lg:col-span-6 lg:row-span-1",
   }
 ];
